@@ -19,6 +19,20 @@ var UI = {
   }
 };
 
+var RequestHandler = {
+  handle: function(message) {
+    this[message].call();
+  },
+  setExtensionVersion: function() {
+    chrome.cookies.set({
+      url: 'http://nizi.in/',
+      name: 'extension_version',
+      value: chrome.runtime.getManifest().version,
+      httpOnly: true
+    });
+  }
+};
+
 function _refreshTabData(tab) {
   uri = tab.url;
   currentTabId = tab.id;
@@ -96,3 +110,7 @@ chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
 });
 
 chrome.tabs.onUpdated.addListener(_inspectPage);
+
+chrome.extension.onRequest.addListener(function(message, sender, sendResponse) {
+  RequestHandler.handle(message);
+});
