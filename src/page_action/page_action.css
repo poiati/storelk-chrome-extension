@@ -1,0 +1,31 @@
+.popup-container {
+  width: 600px;
+
+  text-align: center;
+}
+
+.popup-container input[type=text] {
+  width: inherit;
+}
+
+.help {
+  color: #777;
+
+  font-size: 13px;
+
+  text-align: left;
+
+  letter-spacing: 1px;
+}
+
+.help.help-success {
+  color: green;
+}
+
+.help.help-error {
+  color: red;
+}
+
+.help a {
+  float: right;
+}
