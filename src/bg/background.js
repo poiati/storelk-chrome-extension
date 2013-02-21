@@ -92,7 +92,7 @@ function checkBookmarkExistense(href) {
   var onError = function() {
   };
 
-  _sendRequest('GET', 'href=' + href, '/bookmark/exists/', onSuccess, onError);
+  _sendRequest('GET', 'href=' + escape(href), '/bookmark/exists/', onSuccess, onError);
 }
 
 function addBookmark(expression, onSuccess, onError) {
