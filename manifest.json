@@ -1,6 +1,6 @@
 {
   "name": "nizi.in",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "manifest_version": 2,
   "description": "the pragmatic bookmarking system",
   "homepage_url": "http://nizi.in",
@@ -24,12 +24,13 @@
   "permissions": [
     "tabs",
     "cookies",
-    "http://nizi.in/*"
+    "http://*.nizi.in/*"
   ],
   "content_scripts": [
     {
-      "matches": ["http://nizi.in/*"],
-      "js": ["js/niziin.js"]
+      "matches": ["http://*.nizi.in/*"],
+      "js": ["js/niziin.js"],
+      "run_at": "document_end"
     }
   ]
 }
