@@ -1,21 +1,59 @@
-.popup-container {
-  width: 600px;
+body {
+  background: #f7f7f7;
 
-  text-align: center;
+  color: #878787;
+
+  font: 12px 'Arial';
+}
+
+.address {
+  width: 100%;
+
+  margin-bottom: 8px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.popup-container {
+  width: 400px;
+
+  margin: 10px 6px;
 }
 
 .popup-container input[type=text] {
-  width: inherit;
+  width: 85%;
+  height: 22px;
+
+  border: 1px solid #acacac;
+
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  font-size: 14px;
 }
 
-.help {
-  color: #777;
+.popup-container button {
+  width: 13%;
+  height: 26px;
 
-  font-size: 13px;
+  margin-left: -3px;
 
-  text-align: left;
+  background: #e9e8e8;
 
-  letter-spacing: 1px;
+  border: 1px solid #acacac;
+  border-left: none;
+
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  vertical-align: 1px;
+
+  font-weight: bold;
+
+  cursor: pointer;
 }
 
 .help.help-success {
@@ -24,8 +62,4 @@
 
 .help.help-error {
   color: red;
-}
-
-.help a {
-  float: right;
 }
