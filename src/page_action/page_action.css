@@ -33,6 +33,8 @@ body {
   border-bottom-left-radius: 4px;
 
   font-size: 14px;
+
+  outline: none;
 }
 
 .popup-container button {
