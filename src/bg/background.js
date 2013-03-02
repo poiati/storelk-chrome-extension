@@ -11,13 +11,22 @@ var UI = {
   show: function() {
     chrome.pageAction.show(currentTabId);
   },
-  setPageBookmarkedIcon: function() {
+  setPageBookmarkedIcon: function(icon) {
+    var icon = icon || '../icons/icon19-heart.png';
     chrome.pageAction.setIcon(
-      { tabId: currentTabId, path: '../icons/icon19-heart.png' } 
+      { tabId: currentTabId, path: icon } 
     );
   },
+  setPopup: function(popup) {
+    chrome.pageAction.setPopup({ tabId: currentTabId, popup: popup });
+  },
   setNoPopup: function() {
-    chrome.pageAction.setPopup({ tabId: currentTabId, popup: '' });
+    this.setPopup('');
+  },
+  setDisconnected: function() {
+    this.setPageBookmarkedIcon('../icons/icon19-heart-disconnected.png');
+    this.setPopup('src/page_action/page_action_disconnected.html');
+    this.show();
   }
 };
 
@@ -49,13 +58,22 @@ function _inspectPage(tabId, changeInfo, tab) {
 };
 
 function _sendRequest(method, params, endpoint, onSuccess, onError) {
+  var onSuccessWrapper = function(response) {
+    onSuccess(response);
+  };
+
+  var onErrorWrapper = function(xhr, textStatus, errorThrow) {
+    UI.setDisconnected();
+    onError();
+  };
+
   $.ajax({
     type: method,
     url: 'http://nizi.in/a' + endpoint,
     dataType: 'json',
     data: params,
-    success: onSuccess,
-    error: onError
+    success: onSuccessWrapper,
+    error: onErrorWrapper,
   });
 }
 
