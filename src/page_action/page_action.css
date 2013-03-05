@@ -1,9 +1,43 @@
+@font-face {
+  font-family: 'SignPainter';
+  src: url('/fonts/SignPainter-HouseScript.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: #f7f7f7;
+
+  border: 1px solid #999;
 
   color: #878787;
 
   font: 12px 'Arial';
+}
+
+header {
+  height: 40px;
+
+  background: #4D4E52;
+}
+
+header h1 {
+  padding: 5px 10px;
+
+  color: #f18f68;
+
+  font-family: 'SignPainter';
+  font-size: 25px;
+}
+
+header h1 small {
+  color: #a0a0a0;
+
+  font: 11px 'Arial';
+  font-style: italic;
 }
 
 .address {
@@ -24,15 +58,17 @@ body {
 }
 
 .popup-container input[type=text] {
-  width: 85%;
+  width: 82%;
   height: 22px;
+
+  padding: 1px 5px;
+
+  color: #4D4E52;
 
   border: 1px solid #acacac;
 
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-
-  font-size: 14px;
 
   outline: none;
 }
@@ -45,17 +81,19 @@ body {
 
   background: #e9e8e8;
 
+  color: #878787;
+
   border: 1px solid #acacac;
   border-left: none;
 
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
 
-  vertical-align: 1px;
-
   font-weight: bold;
 
   cursor: pointer;
+
+  background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(229,229,229,1) 100%);
 }
 
 .help.help-success {
