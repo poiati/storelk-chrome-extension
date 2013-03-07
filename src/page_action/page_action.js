@@ -33,8 +33,13 @@ $(function() {
     backgroundPage.addBookmark(_expression(), _onSuccess, _onError);
   };
 
-  backgroundPage.updatePage(function(uri) {
+  backgroundPage.updatePage(function(uri, tags) {
     address.text(uri);
+    if (tags) {
+      input.attr('placeholder', tags.map(function(tag) { 
+        return '#' + tag.replace(/\s+/g, '');
+      }).join(' '));
+    }
     input.focus();
   });
 
@@ -45,4 +50,25 @@ $(function() {
   });
 
   $('button').on('click', _addBookmark);
+
+
+  // Tag Typeahed
+  var lastTagRegex = /#[\w\-_]+$/;
+
+  input.typeahead({
+    source: ['foo', 'bar', 'baz', 'faca', 'foca', 'bola', 'dado', 'bala', 'ovo'],
+    updater: function(item) {
+      var currentValue = this.$element.val(),
+          lastTagIndex = currentValue.search(lastTagRegex);
+      return currentValue.substring(0, lastTagIndex) + "#" + item + " ";
+    },
+    matcher: function(item) {
+      var taginference = this.query.match(lastTagRegex);
+      if (taginference) {
+        var fragment = taginference[0].substring(1);
+        return item.match("^" + fragment);
+      }
+      return false;
+    }
+  });
 });

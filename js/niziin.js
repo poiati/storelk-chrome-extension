@@ -8,4 +8,3 @@ chrome.extension.sendRequest("setExtensionVersion", function(response) {
 });
 
 addInstalledSentinel();
-

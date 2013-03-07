@@ -32,6 +32,11 @@
       "matches": ["http://*.nizi.in/*"],
       "js": ["js/niziin.js"],
       "run_at": "document_end"
+    },
+    {
+      "matches": ["*://*/*"],
+      "js": ["js/explorer.js"],
+      "run_at": "document_end"
     }
   ]
 }

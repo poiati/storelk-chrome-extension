@@ -5,6 +5,7 @@
 // });
 
 var uri = '',
+    tags = null,
     currentTabId = null;
 
 var UI = {
@@ -30,23 +31,12 @@ var UI = {
   }
 };
 
-var RequestHandler = {
-  handle: function(message) {
-    this[message].call();
-  },
-  setExtensionVersion: function() {
-    chrome.cookies.set({
-      url: 'http://nizi.in/',
-      name: 'extension_version',
-      value: chrome.runtime.getManifest().version,
-      httpOnly: true
-    });
-  }
-};
-
 function _refreshTabData(tab) {
   uri = tab.url;
   currentTabId = tab.id;
+  chrome.tabs.sendMessage(currentTabId, {type: 'getTags'}, function(response) {
+    tags = response;
+  });
 }
 
 function _inspectPage(tabId, changeInfo, tab) {
@@ -78,7 +68,7 @@ function _sendRequest(method, params, endpoint, onSuccess, onError) {
 }
 
 function updatePage(fn) {
-  fn(uri);
+  fn(uri, tags);
 }
 
 function checkBookmarkExistense(href) {
@@ -115,7 +105,3 @@ chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
 });
 
 chrome.tabs.onUpdated.addListener(_inspectPage);
-
-chrome.extension.onRequest.addListener(function(message, sender, sendResponse) {
-  RequestHandler.handle(message);
-});
