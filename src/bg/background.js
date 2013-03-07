@@ -4,8 +4,12 @@
 //     "sample_setting": "This is how you use Store.js to remember values"
 // });
 
+var FIVE_MINUTES = 1000 * 60 * 5;
+
 var uri = '',
-    tags = null,
+    tags = [],
+    keywords = null,
+    last_sync = null,
     currentTabId = null;
 
 var UI = {
@@ -35,8 +39,15 @@ function _refreshTabData(tab) {
   uri = tab.url;
   currentTabId = tab.id;
   chrome.tabs.sendMessage(currentTabId, {type: 'getTags'}, function(response) {
-    tags = response;
+    keywords = response;
   });
+
+  if (last_sync === null || last_sync + FIVE_MINUTES < new Date().getTime()) {
+    _sendRequest('GET', {}, '/tag/', function(response) {
+      tags = response.tags;
+      last_sync = new Date().getTime();
+    });
+  }
 }
 
 function _inspectPage(tabId, changeInfo, tab) {
@@ -68,7 +79,7 @@ function _sendRequest(method, params, endpoint, onSuccess, onError) {
 }
 
 function updatePage(fn) {
-  fn(uri, tags);
+  fn(uri, keywords, tags);
 }
 
 function checkBookmarkExistense(href) {
