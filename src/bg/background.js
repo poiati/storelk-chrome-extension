@@ -17,7 +17,7 @@ var UI = {
     chrome.pageAction.show(currentTabId);
   },
   setPageBookmarkedIcon: function(icon) {
-    var icon = icon || '../icons/icon19-heart.png';
+    var icon = icon || '../icons/icon19.png';
     chrome.pageAction.setIcon(
       { tabId: currentTabId, path: icon } 
     );
@@ -29,11 +29,13 @@ var UI = {
     this.setPopup('');
   },
   setDisconnected: function() {
-    this.setPageBookmarkedIcon('../icons/icon19-heart-disconnected.png');
+    this.setPageBookmarkedIcon('../icons/icon19-unavailable.png');
     this.setPopup('src/page_action/page_action_disconnected.html');
     this.show();
   }
 };
+
+var omnibox = NiziOmnibox()
 
 function _refreshTabData(tab) {
   uri = tab.url;
@@ -45,6 +47,7 @@ function _refreshTabData(tab) {
   if (last_sync === null || last_sync + FIVE_MINUTES < new Date().getTime()) {
     _sendRequest('GET', {}, '/tag/', function(response) {
       tags = response.tags;
+      omnibox.refreshTags(tags);
       last_sync = new Date().getTime();
     });
   }

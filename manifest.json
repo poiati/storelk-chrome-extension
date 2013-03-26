@@ -1,24 +1,27 @@
 {
   "name": "nizi.in",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "manifest_version": 2,
   "description": "the pragmatic bookmarking system",
   "homepage_url": "http://nizi.in",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "128": "icons/icon128.png",
+    "19": "icons/icon19.png"
   },
   "default_locale": "en",
   "background": {
     "scripts": [
       "js/jquery-1.8.3.min.js",
+      "src/js/omnibox.js",
       "src/bg/background.js"
     ],
     "persistent": true
   },
+  "omnibox": {
+    "keyword": "nizi"
+  },
   "page_action": {
-    "default_icon": "icons/icon19-heart-stroke.png",
+    "default_icon": "icons/icon19-grayscale.png",
     "default_title": "nizi.in",
     "default_popup": "src/page_action/page_action.html"
   },
