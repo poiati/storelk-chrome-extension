@@ -35,7 +35,7 @@ var UI = {
   }
 };
 
-var omnibox = NiziOmnibox()
+var omnibox = NiziOmnibox();
 
 function _refreshTabData(tab) {
   uri = tab.url;

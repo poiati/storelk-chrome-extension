@@ -6,7 +6,8 @@
   "homepage_url": "http://nizi.in",
   "icons": {
     "128": "icons/icon128.png",
-    "19": "icons/icon19.png"
+    "19": "icons/icon19.png",
+    "16": "icons/icon16.png"
   },
   "default_locale": "en",
   "background": {
@@ -18,7 +19,7 @@
     "persistent": true
   },
   "omnibox": {
-    "keyword": "nizi"
+    "keyword": "n"
   },
   "page_action": {
     "default_icon": "icons/icon19-grayscale.png",
