@@ -25,6 +25,10 @@ var NiziOmnibox = (function() {
         }
       }
     });
+
+    chrome.omnibox.onInputEntered.addListener(function(text) {
+      chrome.tabs.create({ url: 'http://nizi.in/a/tag/' + text.split(/:/)[1] });
+    });
   }
 
   return function() {

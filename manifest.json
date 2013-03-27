@@ -1,13 +1,12 @@
 {
   "name": "nizi.in",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "manifest_version": 2,
   "description": "the pragmatic bookmarking system",
   "homepage_url": "http://nizi.in",
   "icons": {
     "128": "icons/icon128.png",
-    "19": "icons/icon19.png",
-    "16": "icons/icon16.png"
+    "19": "icons/icon19.png"
   },
   "default_locale": "en",
   "background": {
