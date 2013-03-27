@@ -18,6 +18,10 @@ body {
   font: 12px 'Arial';
 }
 
+a, a:visited {
+  color: #878787;
+}
+
 header {
   height: 40px;
 
@@ -32,15 +36,18 @@ header a, header a:hover, header a:visited {
 
 header h1 {
   margin: 0 !important;
-  padding: 0 10px;
+  padding: 0 30px;
 
-  line-height: 34px !important;
+  line-height: 31px !important;
 
-  color: #f18f68;
-
+  color: #58bbdb;
 
   font-family: 'SignPainter';
-  font-size: 25px;
+  font-size: 31px;
+
+  background-image: url('/icons/icon19.png');
+  background-repeat: no-repeat;
+  background-position: 5px 8px;
 }
 
 header h1 small {
@@ -51,13 +58,21 @@ header h1 small {
 }
 
 footer {
-  margin-top: 120px;
+  margin-top: 70px;
 }
 
 footer ul {
   width: 100%;
 
   list-style: none;
+
+  text-align: right;
+}
+
+footer ul li {
+  display: inline-block;
+
+  margin: 0 10px;
 }
 
 .address {
@@ -105,9 +120,7 @@ footer ul {
 
   margin-left: -3px;
 
-  background: #e9e8e8;
-
-  color: #878787;
+  color: #4D4E52;
 
   border: 1px solid #acacac;
   border-left: none;
@@ -118,6 +131,8 @@ footer ul {
   cursor: pointer;
 
   background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(229,229,229,1) 100%);
+
+  font-size: 11px;
 }
 
 .help.help-success {
@@ -126,4 +141,16 @@ footer ul {
 
 .help.help-error {
   color: red;
+}
+
+/* Typeahead customization */
+
+.dropdown-menu > li > a {
+  line-height: 10px !important;
+}
+
+.dropdown-menu > li.active > a {
+  color: #000;
+
+  background: #DDD;
 }
