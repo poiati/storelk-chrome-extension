@@ -73,7 +73,7 @@ function _sendRequest(method, params, endpoint, onSuccess, onError) {
 
   $.ajax({
     type: method,
-    url: 'http://nizi.in/a' + endpoint,
+    url: 'https://nizi.in/a' + endpoint,
     dataType: 'json',
     data: params,
     success: onSuccessWrapper,
